@@ -1,10 +1,9 @@
-package todo.mobile.com.todoapp.authentication;
+package todo.mobile.com.todoapp.authentication.ui;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -24,38 +23,34 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import todo.mobile.com.todoapp.R;
+import todo.mobile.com.todoapp.authentication.AuthenticationPresenter;
+import todo.mobile.com.todoapp.authentication.AuthenticationPresenterImpl;
 import todo.mobile.com.todoapp.home.ContainerActivity;
+import todo.mobile.com.todoapp.utils.Utils;
 
-public class AuthenticationActivity extends AppCompatActivity {
+public class AuthenticationActivity extends AppCompatActivity implements AuthenticationView {
 
     LoginButton btn_login_fb;
     CallbackManager callbackManager;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
+    AuthenticationPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
+
+
+        presenter = new AuthenticationPresenterImpl(this);
         setContentView(R.layout.activity_authentication);
-
-        mAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
-
-        authStateListener = new FirebaseAuth.AuthStateListener(){
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                } else {
-
-                }
-            }
-        };
-
+        setAuthStateListener();
         init();
+    }
+
+    public void setAuthStateListener() {
+        presenter.onAuthStateListener();
     }
 
     private void init() {
@@ -80,38 +75,20 @@ public class AuthenticationActivity extends AppCompatActivity {
     }
 
     public void signInWithFacebook(AccessToken accessToken) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        FirebaseUser user = task.getResult().getUser();
-
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(AuthenticationActivity.this, ContainerActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(AuthenticationActivity.this, getResources().getString(R.string.fb_authentication_failed), Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
+        presenter.validateAuthenticationFb(accessToken);
     }
 
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(authStateListener != null) {
-            mAuth.removeAuthStateListener(authStateListener);
-        }
+        presenter.onStopAuthentication();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(authStateListener);
+        presenter.onStartAuthentication();
     }
 
     @Override
@@ -121,4 +98,21 @@ public class AuthenticationActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean isOnline() {
+        Utils utils = new Utils(this);
+        return  utils.isOnline();
+    }
+
+    @Override
+    public void navigateToHomeScreen() {
+        Intent intent = new Intent(AuthenticationActivity.this, ContainerActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void authenticationFbError(String error) {
+        String errorMsg = String.format(getResources().getString(R.string.fb_authentication_failed), error);
+        Toast.makeText(AuthenticationActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+    }
 }

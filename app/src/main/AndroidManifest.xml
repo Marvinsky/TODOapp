@@ -16,7 +16,7 @@
 
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".authentication.AuthenticationActivity" >
+        <activity android:name=".authentication.ui.AuthenticationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

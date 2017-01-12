@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TODOapp</string>
     <string name="facebook_app_id">822765724530771</string>
-    <string name="fb_authentication_failed">Autentication fallida</string>
+    <string name="fb_authentication_failed">Autentication fallida debido: %s</string>
 </resources>
