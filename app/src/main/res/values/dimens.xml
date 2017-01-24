@@ -3,4 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="size_title">40dp</dimen>
+    <dimen name="marginbottom_listitem">10dp</dimen>
+    <dimen name="textSize_high">20sp</dimen>
+    <dimen name="textSize_small">12sp</dimen>
+    <dimen name="height_listitem">100dp</dimen>
+    <dimen name="height_divider">1dp</dimen>
 </resources>
