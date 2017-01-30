@@ -9,11 +9,13 @@ public class Task {
     private String title;
     private String content;
     private String category;
+    private boolean checked;
 
     public Task(String title, String content, String category) {
         this.title = title;
         this.content = content;
         this.category = category;
+        this.checked = false;
     }
 
     public String getId() {
@@ -47,4 +49,8 @@ public class Task {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public Boolean getChecked() { return checked; }
+
+    public void setChecked(Boolean checked) { this.checked = checked; }
 }
