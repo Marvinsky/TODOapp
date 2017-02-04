@@ -3,6 +3,7 @@ package todo.mobile.com.todoapp.home.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,7 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
             tvCategory = (TextView)itemView.findViewById(R.id.lblCategory);
         }
 
-        public void bindTask(Task task) {
+        public void bindTask(final Task task) {
             tvTitle.setText(task.getTitle());
             tvContent.setText(task.getContent());
             tvCategory.setText(task.getCategory());
@@ -73,6 +74,9 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(activity, TaskDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("TASK_DETAIL", task);
+                    intent.putExtras(bundle);
                     activity.startActivity(intent);
                 }
             });

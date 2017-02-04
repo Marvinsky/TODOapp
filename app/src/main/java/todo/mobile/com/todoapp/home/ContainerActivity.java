@@ -9,6 +9,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.home.adapter.TaskAdapterRecyclerView;
@@ -29,7 +30,7 @@ public class ContainerActivity extends AppCompatActivity {
 
         tasks = new ArrayList<Task>();
         for (int i = 0; i < 10; i++) {
-            tasks.add(new Task("title" + i, "Content" + i, "Category"+i));
+            tasks.add(new Task("title" + i, "Content" + i, "Category"+i, "https://pe-libertyschool.wikispaces.com/file/view/tareas-pendientes-L-1.jpeg/481064322/tareas-pendientes-L-1.jpeg", "green", new Date().toString(), false));
         }
 
         todoRecycler = (RecyclerView)findViewById(R.id.todoRecycler);

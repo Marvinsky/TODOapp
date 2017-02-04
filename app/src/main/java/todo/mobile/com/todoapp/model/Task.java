@@ -1,22 +1,29 @@
 package todo.mobile.com.todoapp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by mabisrror on 1/24/17.
  */
 
-public class Task {
+public class Task implements Serializable {
     private String id;
     private String title;
     private String content;
     private String category;
     private String imageUrl;
+    private String color;
     private boolean checked;
+    private String createdDate;
 
-    public Task(String title, String content, String category) {
+    public Task(String title, String content, String category, String imageUrl, String color, String createdDate, boolean checked) {
         this.title = title;
         this.content = content;
         this.category = category;
-        this.checked = false;
+        this.imageUrl = imageUrl;
+        this.color = color;
+        this.createdDate = createdDate;
+        this.checked = checked;
     }
 
     public String getId() {
@@ -69,5 +76,21 @@ public class Task {
 
     public void setChecked(boolean checked) {
         this.checked = checked;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }
