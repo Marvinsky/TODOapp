@@ -2,4 +2,7 @@
 <resources>
     <string name="fb_authentication_failed">Authentication failed due: %s</string>
     <string name="toolbar_title_detail">Detail</string>
+    <string name="txt_task_category">Category</string>
+    <string name="txt_task_date">Date</string>
+    <string name="txt_task_description">Description</string>
 </resources>
