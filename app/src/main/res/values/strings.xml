@@ -2,9 +2,12 @@
     <string name="app_name">TODOapp</string>
     <string name="facebook_app_id">822765724530771</string>
     <string name="fb_authentication_failed">Autentication fallida debido: %s</string>
-    <string name="toolbar_title_detail">Detail</string>
-    <string name="txt_task_category">Category</string>
-    <string name="txt_task_date">Date</string>
+    <string name="toolbar_title_detail">Detalle</string>
+    <string name="txt_task_category">Categoria</string>
+    <string name="txt_task_date">Fecha</string>
     <string name="txt_task_color">Color</string>
-    <string name="txt_task_description">Description</string>
+    <string name="txt_task_description">Descripción</string>
+    <string name="action_share_link_task">Compartir</string>
+    <string name="action_delete_task">Eliminar</string>
+    <string name="action_edit_link_task">Editar</string>
 </resources>

@@ -5,4 +5,7 @@
     <string name="txt_task_category">Category</string>
     <string name="txt_task_date">Date</string>
     <string name="txt_task_description">Description</string>
+    <string name="action_share_link_task">Share Link</string>
+    <string name="action_delete_task">Delete</string>
+    <string name="action_edit_link_task">Edit</string>
 </resources>

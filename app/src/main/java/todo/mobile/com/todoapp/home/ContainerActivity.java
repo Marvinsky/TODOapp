@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -27,7 +28,7 @@ public class ContainerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
-
+        showToolbar(getResources().getString(R.string.app_name), false);
         tasks = new ArrayList<Task>();
         for (int i = 0; i < 10; i++) {
             tasks.add(new Task("title" + i, "Content" + i, "Category"+i, "https://pe-libertyschool.wikispaces.com/file/view/tareas-pendientes-L-1.jpeg/481064322/tareas-pendientes-L-1.jpeg", "green", new Date().toString(), false));
@@ -40,5 +41,12 @@ public class ContainerActivity extends AppCompatActivity {
 
         adapterRecyclerView = new TaskAdapterRecyclerView(ContainerActivity.this , tasks, R.layout.cardview_picture);
         todoRecycler.setAdapter(adapterRecyclerView);
+    }
+
+    public void showToolbar(String title, boolean upButton) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
 }
