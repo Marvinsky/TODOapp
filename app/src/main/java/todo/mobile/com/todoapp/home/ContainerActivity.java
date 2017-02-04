@@ -37,7 +37,7 @@ public class ContainerActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         todoRecycler.setLayoutManager(linearLayoutManager);
 
-        adapterRecyclerView = new TaskAdapterRecyclerView(tasks, R.layout.listitem_task);
+        adapterRecyclerView = new TaskAdapterRecyclerView(ContainerActivity.this , tasks, R.layout.cardview_picture);
         todoRecycler.setAdapter(adapterRecyclerView);
     }
 }

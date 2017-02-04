@@ -8,4 +8,5 @@
     <dimen name="textSize_small">12sp</dimen>
     <dimen name="height_listitem">100dp</dimen>
     <dimen name="height_divider">1dp</dimen>
+    <dimen name="height_cardview">200dp</dimen>
 </resources>

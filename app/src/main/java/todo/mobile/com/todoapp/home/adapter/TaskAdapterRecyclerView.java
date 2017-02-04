@@ -1,14 +1,21 @@
 package todo.mobile.com.todoapp.home.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import todo.mobile.com.todoapp.R;
+import todo.mobile.com.todoapp.details.TaskDetailsActivity;
 import todo.mobile.com.todoapp.model.Task;
 
 /**
@@ -18,8 +25,10 @@ import todo.mobile.com.todoapp.model.Task;
 public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRecyclerView.TasksViewHolder>{
     private ArrayList<Task> tasks;
     private int resource;
+    Activity activity;
 
-    public TaskAdapterRecyclerView(ArrayList<Task> tasks, int resource) {
+    public TaskAdapterRecyclerView(Activity activity, ArrayList<Task> tasks, int resource) {
+        this.activity = activity;
         this.tasks = tasks;
         this.resource = resource;
     }
@@ -42,13 +51,14 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
     }
 
     public class TasksViewHolder extends RecyclerView.ViewHolder {
+        private ImageView iviPicture;
         private TextView tvTitle;
         private TextView tvContent;
         private TextView tvCategory;
 
         public TasksViewHolder(View itemView) {
             super(itemView);
-
+            iviPicture = (ImageView)itemView.findViewById(R.id.imageCard);
             tvTitle = (TextView)itemView.findViewById(R.id.lblTitle);
             tvContent = (TextView)itemView.findViewById(R.id.lblContent);
             tvCategory = (TextView)itemView.findViewById(R.id.lblCategory);
@@ -58,6 +68,16 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
             tvTitle.setText(task.getTitle());
             tvContent.setText(task.getContent());
             tvCategory.setText(task.getCategory());
+            Picasso.with(activity).load(task.getImageUrl()).into(iviPicture);
+            iviPicture.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, TaskDetailsActivity.class);
+                    activity.startActivity(intent);
+                }
+            });
+
+
         }
     }
 }

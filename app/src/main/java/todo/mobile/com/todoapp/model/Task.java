@@ -9,6 +9,7 @@ public class Task {
     private String title;
     private String content;
     private String category;
+    private String imageUrl;
     private boolean checked;
 
     public Task(String title, String content, String category) {
@@ -53,4 +54,20 @@ public class Task {
     public Boolean getChecked() { return checked; }
 
     public void setChecked(Boolean checked) { this.checked = checked; }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 }
