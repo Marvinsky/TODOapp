@@ -1,4 +1,4 @@
-package todo.mobile.com.todoapp.details;
+package todo.mobile.com.todoapp.home;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;

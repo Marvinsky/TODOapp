@@ -1,11 +1,9 @@
 package todo.mobile.com.todoapp.home.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import todo.mobile.com.todoapp.R;
-import todo.mobile.com.todoapp.app.TodoApplication;
-import todo.mobile.com.todoapp.details.fragment.TaskDetailFragment;
-import todo.mobile.com.todoapp.home.ContainerActivity;
 import todo.mobile.com.todoapp.home.adapter.TaskAdapterRecyclerView;
 import todo.mobile.com.todoapp.listeners.OnTaskListener;
 import todo.mobile.com.todoapp.model.Task;
@@ -56,9 +51,6 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             tasks.add(new Task("title" + i, "Content" + i, "Category"+i, "https://pe-libertyschool.wikispaces.com/file/view/tareas-pendientes-L-1.jpeg/481064322/tareas-pendientes-L-1.jpeg", "green", new Date().toString(), false));
         }
-
-        //task = (Task) getIntent().getExtras().getSerializable("TASK_DETAIL");
-        //((TodoApplication) getActivity().getApplication()).setTask(task);
 
         todoRecycler = (RecyclerView)view.findViewById(R.id.todoRecycler);
         linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());

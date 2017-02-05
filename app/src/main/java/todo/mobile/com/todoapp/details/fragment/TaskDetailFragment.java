@@ -32,9 +32,6 @@ public class TaskDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
         showToolbar(getResources().getString(R.string.toolbar_title_detail), true, view);
-        //task = ((TodoApplication)this.getActivity().getApplication()).getTask();
-        //task = getActivity().getIntent().ge  //getExtras().getSerializable("TASK_DETAIL");
-        //task = (Task) getActivity().getIntent().getExtras().getSerializable("TASK_DETAIL");
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             task = (Task) bundle.getSerializable("TASK_DETAIL");
@@ -50,12 +47,7 @@ public class TaskDetailFragment extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
-
-        
-
     }
-
-
 
     private void ui(View view) {
         iviMainImage = (ImageView)view.findViewById(R.id.iviTaskImage);
@@ -72,7 +64,4 @@ public class TaskDetailFragment extends Fragment {
         tvDate.setText(task.getCreatedDate());
         tvDescription.setText(task.getContent());
     }
-
-
-
 }
