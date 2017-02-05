@@ -10,4 +10,5 @@
     <dimen name="height_divider">1dp</dimen>
     <dimen name="height_cardview">100dp</dimen>
     <dimen name="margin_top_task_detail">64dp</dimen>
+    <dimen name="bottom_bar_height">0dp</dimen>
 </resources>

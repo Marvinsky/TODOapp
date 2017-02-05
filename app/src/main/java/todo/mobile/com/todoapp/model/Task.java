@@ -1,12 +1,15 @@
 package todo.mobile.com.todoapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by mabisrror on 1/24/17.
  */
 
-public class Task implements Serializable {
+public class Task implements Serializable, Parcelable {
     private String id;
     private String title;
     private String content;
@@ -25,6 +28,29 @@ public class Task implements Serializable {
         this.createdDate = createdDate;
         this.checked = checked;
     }
+
+    protected Task(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        content = in.readString();
+        category = in.readString();
+        imageUrl = in.readString();
+        color = in.readString();
+        checked = in.readByte() != 0;
+        createdDate = in.readString();
+    }
+
+    public static final Creator<Task> CREATOR = new Creator<Task>() {
+        @Override
+        public Task createFromParcel(Parcel in) {
+            return new Task(in);
+        }
+
+        @Override
+        public Task[] newArray(int size) {
+            return new Task[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -92,5 +118,22 @@ public class Task implements Serializable {
 
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(title);
+        parcel.writeString(content);
+        parcel.writeString(category);
+        parcel.writeString(imageUrl);
+        parcel.writeString(color);
+        parcel.writeByte((byte) (checked ? 1 : 0));
+        parcel.writeString(createdDate);
     }
 }

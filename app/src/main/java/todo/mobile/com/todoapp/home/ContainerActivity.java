@@ -14,6 +14,7 @@ import java.util.Date;
 
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.home.adapter.TaskAdapterRecyclerView;
+import todo.mobile.com.todoapp.listeners.OnTaskListener;
 import todo.mobile.com.todoapp.model.Task;
 
 public class ContainerActivity extends AppCompatActivity {
@@ -39,8 +40,8 @@ public class ContainerActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         todoRecycler.setLayoutManager(linearLayoutManager);
 
-        adapterRecyclerView = new TaskAdapterRecyclerView(ContainerActivity.this , tasks, R.layout.cardview_picture);
-        todoRecycler.setAdapter(adapterRecyclerView);
+        //adapterRecyclerView = new TaskAdapterRecyclerView(ContainerActivity.this , tasks, R.layout.cardview_picture);
+        //todoRecycler.setAdapter(adapterRecyclerView);
     }
 
     public void showToolbar(String title, boolean upButton) {
@@ -49,4 +50,5 @@ public class ContainerActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
+
 }

@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.authentication.AuthenticationPresenter;
 import todo.mobile.com.todoapp.authentication.AuthenticationPresenterImpl;
+import todo.mobile.com.todoapp.details.TaskContainerActivity;
 import todo.mobile.com.todoapp.home.ContainerActivity;
 import todo.mobile.com.todoapp.utils.Utils;
 
@@ -106,7 +107,7 @@ public class AuthenticationActivity extends AppCompatActivity implements Authent
 
     @Override
     public void navigateToHomeScreen() {
-        Intent intent = new Intent(AuthenticationActivity.this, ContainerActivity.class);
+        Intent intent = new Intent(AuthenticationActivity.this, TaskContainerActivity.class);
         startActivity(intent);
     }
 
