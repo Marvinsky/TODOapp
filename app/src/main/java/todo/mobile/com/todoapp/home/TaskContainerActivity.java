@@ -49,6 +49,11 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private void editTask() {
 
     }
@@ -81,6 +86,7 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_detail, menu);
+        menu.clear();
         return true;
     }
 

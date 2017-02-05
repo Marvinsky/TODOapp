@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class TaskDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
         showToolbar(getResources().getString(R.string.toolbar_title_detail), true, view);
+        setHasOptionsMenu(true);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             task = (Task) bundle.getSerializable("TASK_DETAIL");
@@ -63,5 +65,18 @@ public class TaskDetailFragment extends Fragment {
         tvColor.setText(task.getColor());
         tvDate.setText(task.getCreatedDate());
         tvDescription.setText(task.getContent());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().invalidateOptionsMenu();
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.clear();
+        getActivity().getMenuInflater().inflate(R.menu.menu_detail, menu);
     }
 }
