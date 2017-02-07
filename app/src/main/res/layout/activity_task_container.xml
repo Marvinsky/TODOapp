@@ -12,5 +12,6 @@
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/bottom_bar_height"
         />
+
 </RelativeLayout>
 

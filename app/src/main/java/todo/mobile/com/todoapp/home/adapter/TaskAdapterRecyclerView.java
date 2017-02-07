@@ -75,12 +75,6 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
                     if (mListener != null && task != null) {
                         mListener.selectedItemTask(task);
                     }
-                    /*Intent intent = new Intent(activity, TaskContainerActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("TASK_DETAIL", task);
-                    intent.putExtras(bundle);
-                    activity.startActivity(intent);
-                    */
                 }
             });
 

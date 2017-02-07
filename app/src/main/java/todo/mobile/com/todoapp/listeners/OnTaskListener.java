@@ -8,5 +8,6 @@ import todo.mobile.com.todoapp.model.Task;
 
 public interface OnTaskListener {
     void selectedItemTask(Task task);
+    void saveItemTask();
 
 }

@@ -1,12 +1,15 @@
 package todo.mobile.com.todoapp.home;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,11 +25,20 @@ import todo.mobile.com.todoapp.model.Task;
 
 public class TaskContainerActivity extends AppCompatActivity implements OnTaskListener {
 
+    private TaskDetailFragment detailFragment;
+    private HomeFragment homeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_container);
+        app();
         home();
+    }
+
+    private void app() {
+        homeFragment = new HomeFragment();
+        detailFragment = new TaskDetailFragment();
     }
 
     @Override
@@ -52,6 +64,7 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        saveItemTask();
     }
 
     private void editTask() {
@@ -66,17 +79,9 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
 
     }
 
-    private void detailTask() {
-        TaskDetailFragment detail = new TaskDetailFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, detail)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(null)
-                .commit();
-    }
 
     private void home() {
-        HomeFragment home = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, home)
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(null)
                 .commit();
@@ -92,13 +97,17 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
 
     @Override
     public void selectedItemTask(Task task) {
-        TaskDetailFragment detail = new TaskDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("TASK_DETAIL", task);
-        detail.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, detail)
+        detailFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, detailFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void saveItemTask() {
+        detailFragment.saveTask();
     }
 }

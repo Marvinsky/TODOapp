@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     TaskAdapterRecyclerView adapterRecyclerView;
     ArrayList<Task> tasks;
     OnTaskListener mListener;
+    boolean mDualPane;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,7 +39,6 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Nullable
     @Override
