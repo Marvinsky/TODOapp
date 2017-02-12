@@ -10,4 +10,7 @@
     <string name="action_edit_link_task">Edit</string>
     <string name="toolbar_title_edit">Edit</string>
     <string name="txt_task_title">Title</string>
+    <string name="txt_task_latitude">Latitude</string>
+    <string name="txt_task_longitude">Longitude</string>
+    <string name="txt_task_unknow">Unknow</string>
 </resources>
