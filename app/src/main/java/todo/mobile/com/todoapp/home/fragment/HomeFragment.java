@@ -1,6 +1,11 @@
 package todo.mobile.com.todoapp.home.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +17,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +37,13 @@ public class HomeFragment extends Fragment {
     TaskAdapterRecyclerView adapterRecyclerView;
     ArrayList<Task> tasks;
     OnTaskListener mListener;
-    boolean mDualPane;
+
+    ImageButton fab;
+    ViewGroup fabContainer;
+    private boolean expanded = false;
+    private View fabAction1;
+    private float offset1;
+    private final String TRANSLATION_Y = "translationY";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +60,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         showToolbar(getResources().getString(R.string.app_name), false, view);
+        init(view);
 
         tasks = new ArrayList<Task>();
         for (int i = 0; i < 10; i++) {
@@ -62,13 +77,84 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    private void init(View view) {
+        fab = (ImageButton)view.findViewById(R.id.fab);
+        fabContainer = (ViewGroup) view.findViewById(R.id.fab_container);
+        fabAction1 = (View)view.findViewById(R.id.fab_action_1);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                expanded = !expanded;
+                if (expanded) {
+                    expandFab();
+                } else {
+                    collapseFab();
+                }
+            }
+        });
+
+        fabContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
+                offset1 = fab.getY() - fabAction1.getY();
+                fabAction1.setTranslationY(offset1);
+                return true;
+            }
+        });
+
+        fabAction1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "action 1", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void collapseFab() {
+        fab.setImageResource(R.drawable.animated_plus);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(createCollapseAnimator(fabAction1, offset1));
+        animatorSet.start();
+        animateFab();
+    }
+
+    private void expandFab() {
+        fab.setImageResource(R.drawable.animated_minus);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(createExpandAnimator(fabAction1, offset1));
+        animatorSet.start();
+        animateFab();
+    }
+
+    private  void animateFab() {
+        Drawable drawable = fab.getDrawable();
+        if (drawable instanceof Animatable) {
+            ((Animatable) drawable).start();
+        }
+    }
+
+    private Animator createExpandAnimator(View view, float offset) {
+        return ObjectAnimator.ofFloat(view, TRANSLATION_Y, offset, 0)
+                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
+    }
+
+    private Animator createCollapseAnimator(View view, float offset) {
+        return ObjectAnimator.ofFloat(view, TRANSLATION_Y, 0, offset)
+                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
+    }
+
+
     public void showToolbar(String title, boolean upButton, View view) {
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
-
 
     @Override
     public void onAttach(Context context) {

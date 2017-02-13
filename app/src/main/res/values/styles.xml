@@ -13,4 +13,19 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="FloatingActionButton" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/fab_background</item>
+        <item name="android:stateListAnimator">@animator/fab_state_list_animator</item>
+        <item name="android:layout_width">@dimen/fab_layout_width</item>
+        <item name="android:layout_height">@dimen/fab_layout_height</item>
+    </style>
+
+    <style name="FloatingActionButton.Mini">
+        <item name="android:layout_width">@dimen/fab_mini_layout_width</item>
+        <item name="android:layout_height">@dimen/fab_mini_layout_height</item>
+        <item name="android:layout_margin">@dimen/fab_mini_margin</item>
+    </style>
+
+
 </resources>
