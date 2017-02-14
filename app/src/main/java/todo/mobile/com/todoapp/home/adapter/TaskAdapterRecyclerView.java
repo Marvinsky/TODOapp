@@ -73,7 +73,7 @@ public class TaskAdapterRecyclerView extends RecyclerView.Adapter<TaskAdapterRec
                 @Override
                 public void onClick(View view) {
                     if (mListener != null && task != null) {
-                        mListener.selectedItemTask(task);
+                        mListener.navigateTaskDetail(task);
                     }
                 }
             });

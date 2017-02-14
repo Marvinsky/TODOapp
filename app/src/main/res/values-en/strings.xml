@@ -13,4 +13,5 @@
     <string name="txt_task_latitude">Latitude</string>
     <string name="txt_task_longitude">Longitude</string>
     <string name="txt_task_unknow">Unknow</string>
+    <string name="toolbar_title_new_task">New Task</string>
 </resources>

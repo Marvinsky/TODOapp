@@ -58,11 +58,11 @@ public class TaskDetailFragment extends Fragment implements
         }
 
         apiClient = new GoogleApiClient.Builder(getActivity())
-                .enableAutoManage(getActivity(), this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
+                    .enableAutoManage(getActivity(), this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
 
         ui(view);
         return view;
@@ -73,6 +73,19 @@ public class TaskDetailFragment extends Fragment implements
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    private void onBackPressed() {
+        mListener.navigateBackToHome();
+        saveTask();
+        onDestroy();
     }
 
     private void ui(View view) {
@@ -92,16 +105,12 @@ public class TaskDetailFragment extends Fragment implements
         etColor = (EditText)view.findViewById(R.id.etColor);
         etDescription = (EditText)view.findViewById(R.id.etDescription);
 
-        //updateLatLong(location);
-
-
         Picasso.with(getActivity()).load(task.getImageUrl()).into(iviMainImage);
         tvTitle.setText(task.getTitle());
         tvCategory.setText(task.getCategory());
         tvColor.setText(task.getColor());
         tvDate.setText(task.getCreatedDate());
         tvDescription.setText(task.getContent());
-
 
         hideEditText(etTitle);
         hideEditText(etCategory);

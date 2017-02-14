@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fitsSystemWindows="true"
+android:id="@+id/detailFragmentCL"
+tools:context="todo.mobile.com.todoapp.newtask.fragment.TaskNewFragment">
+
+<include layout="@layout/actionbar_toolbar"/>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/task_ly_marginbotton"
+            android:padding="@dimen/task_padding">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#ffffff"
+                android:layout_marginRight="@dimen/task_ly_marginright"
+                android:id="@+id/iviNewTaskImage" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_task_title"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:id="@+id/etNewTaskTitle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding">
+
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_category"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/txt_task_category"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textSize="14sp"
+                android:hint="@string/txt_task_category"
+                android:textColor="#000000"
+                android:id="@+id/etCategory" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding">
+
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crossed_out_date"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/txt_task_date"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:hint="@string/txt_task_date"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:id="@+id/etDate" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding">
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tags"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/txt_task_color"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:hint="@string/txt_task_color"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:id="@+id/etColor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding"
+            >
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_latitude"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/txt_task_latitude"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                tools:text="343243"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:id="@+id/tviLatitude" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding"
+            >
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_longitude"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/txt_task_longitude"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                tools:text="343243"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:id="@+id/tviLongitude" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/task_linearlayout_padding">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/txt_task_description"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:hint="@string/txt_task_description"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:id="@+id/etDescription" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

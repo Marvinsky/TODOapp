@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
         fabAction1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "action 1", Toast.LENGTH_SHORT).show();
+                mListener.navigateNewTask();
             }
         });
 
@@ -155,6 +155,7 @@ public class HomeFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
+
 
     @Override
     public void onAttach(Context context) {

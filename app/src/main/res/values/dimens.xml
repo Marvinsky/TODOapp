@@ -22,4 +22,9 @@
     <dimen name="fab_margin_top">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="task_ly_marginbotton">20dp</dimen>
+    <dimen name="task_padding">10dp</dimen>
+    <dimen name="task_ly_marginright">10dp</dimen>
+    <dimen name="task_linearlayout_padding">10dp</dimen>
+
 </resources>
