@@ -208,6 +208,22 @@ tools:context="todo.mobile.com.todoapp.newtask.fragment.TaskNewFragment">
 
         </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <ToggleButton
+            android:id="@+id/btnActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/txt_stop_update"
+            android:textOff="@string/txt_start_update"
+            />
+        </LinearLayout>
+
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

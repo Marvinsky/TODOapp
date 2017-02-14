@@ -35,12 +35,12 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
         homeFragment = new HomeFragment();
     }
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_edit_task:
-                editTask();
                 return true;
             case R.id.action_share_link:
                 shareTask();
@@ -51,19 +51,7 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
         }
         return super.onOptionsItemSelected(item);
     }
-
-    private void editTask() {
-
-    }
-
-    private void deleteTask() {
-
-    }
-
-    private void shareTask() {
-
-    }
-
+    */
 
     private void home() {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment)

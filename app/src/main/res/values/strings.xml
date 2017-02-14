@@ -19,4 +19,7 @@
     <string name="txt_task_longitude">Longitude</string>
     <string name="txt_task_unknow">Unknow</string>
     <string name="toolbar_title_new_task">New Task</string>
+    <string name="action_location">Location</string>
+    <string name="txt_stop_update">Stop Update</string>
+    <string name="txt_start_update">Start Update</string>
 </resources>
