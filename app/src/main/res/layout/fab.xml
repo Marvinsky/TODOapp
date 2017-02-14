@@ -9,6 +9,17 @@
         android:clipChildren="false"
         >
 
+
+        <ImageButton
+            android:id="@+id/fab_action_2"
+            style="@style/FloatingActionButton.Mini"
+            android:src="@drawable/ic_circled_user_male"
+            android:layout_above="@+id/fab_action_1"
+            android:layout_alignEnd="@+id/fab"
+            android:contentDescription="@null"
+            />
+
+
         <ImageButton
             android:id="@+id/fab_action_1"
             style="@style/FloatingActionButton.Mini"

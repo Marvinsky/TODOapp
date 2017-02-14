@@ -10,4 +10,5 @@ public interface OnTaskListener {
     void navigateTaskDetail(Task task);
     void navigateBackToHome();
     void navigateNewTask();
+    void navigateProfile();
 }

@@ -42,7 +42,9 @@ public class HomeFragment extends Fragment {
     ViewGroup fabContainer;
     private boolean expanded = false;
     private View fabAction1;
+    private View fabAction2;
     private float offset1;
+    private float offset2;
     private final String TRANSLATION_Y = "translationY";
 
     public HomeFragment() {
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment {
         fab = (ImageButton)view.findViewById(R.id.fab);
         fabContainer = (ViewGroup) view.findViewById(R.id.fab_container);
         fabAction1 = (View)view.findViewById(R.id.fab_action_1);
-
+        fabAction2 = (View)view.findViewById(R.id.fab_action_2);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +103,10 @@ public class HomeFragment extends Fragment {
                 fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
                 offset1 = fab.getY() - fabAction1.getY();
                 fabAction1.setTranslationY(offset1);
+
+                offset2 = fab.getY() - fabAction2.getY();
+                fabAction2.setTranslationY(offset2);
+
                 return true;
             }
         });
@@ -113,12 +119,21 @@ public class HomeFragment extends Fragment {
         });
 
 
+        fabAction2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                mListener.navigateProfile();
+            }
+        });
+
+
     }
 
     private void collapseFab() {
         fab.setImageResource(R.drawable.animated_plus);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(createCollapseAnimator(fabAction1, offset1));
+        animatorSet.playTogether(createCollapseAnimator(fabAction1, offset1),
+                createCollapseAnimator(fabAction2, offset2));
         animatorSet.start();
         animateFab();
     }
@@ -126,7 +141,8 @@ public class HomeFragment extends Fragment {
     private void expandFab() {
         fab.setImageResource(R.drawable.animated_minus);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(createExpandAnimator(fabAction1, offset1));
+        animatorSet.playTogether(createExpandAnimator(fabAction1, offset1),
+                createExpandAnimator(fabAction2, offset2));
         animatorSet.start();
         animateFab();
     }
