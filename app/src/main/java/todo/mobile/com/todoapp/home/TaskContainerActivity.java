@@ -1,7 +1,6 @@
 package todo.mobile.com.todoapp.home;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.details.fragment.TaskDetailFragment;
 import todo.mobile.com.todoapp.geolocalization.TaskMapActivity;
-import todo.mobile.com.todoapp.geolocalization.fragment.TaskMapFragment;
 import todo.mobile.com.todoapp.home.fragment.HomeFragment;
 import todo.mobile.com.todoapp.listeners.OnTaskListener;
 import todo.mobile.com.todoapp.model.Task;

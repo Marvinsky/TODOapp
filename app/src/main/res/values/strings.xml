@@ -22,4 +22,8 @@
     <string name="action_location">Location</string>
     <string name="txt_stop_update">Stop Update</string>
     <string name="txt_start_update">Start Update</string>
+    <string name="txt_options">Optiones</string>
+    <string name="txt_move">Move</string>
+    <string name="txt_animate">Animate</string>
+    <string name="txt_position">Position</string>
 </resources>

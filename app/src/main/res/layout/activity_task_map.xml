@@ -4,17 +4,45 @@
     android:id="@+id/activity_task_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="todo.mobile.com.todoapp.geolocalization.TaskMapActivity">
+
+    <Button
+        android:id="@+id/btnOpciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_options"
+        />
+
+    <Button
+        android:id="@+id/btnMove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_move"
+        android:layout_toRightOf="@id/btnOpciones"
+        />
+
+    <Button
+        android:id="@+id/btnAnimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_animate"
+        android:layout_toRightOf="@id/btnMove"
+        />
+
+    <Button
+        android:id="@+id/btnPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_position"
+        android:layout_toRightOf="@id/btnAnimate"
+        />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnOpciones"
+        />
 
 </RelativeLayout>
