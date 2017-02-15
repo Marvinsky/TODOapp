@@ -15,7 +15,7 @@ import todo.mobile.com.todoapp.model.Task;
 public class TodoApplication extends Application{
 
     Context context;
-    Task task;
+
 
     @Override
     public void onCreate() {
@@ -35,11 +35,4 @@ public class TodoApplication extends Application{
         this.context = context;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
 }

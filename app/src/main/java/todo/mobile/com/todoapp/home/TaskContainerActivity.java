@@ -1,15 +1,18 @@
 package todo.mobile.com.todoapp.home;
 
-import android.support.v4.app.FragmentManager;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.details.fragment.TaskDetailFragment;
+import todo.mobile.com.todoapp.geolocalization.TaskMapActivity;
+import todo.mobile.com.todoapp.geolocalization.fragment.TaskMapFragment;
 import todo.mobile.com.todoapp.home.fragment.HomeFragment;
 import todo.mobile.com.todoapp.listeners.OnTaskListener;
 import todo.mobile.com.todoapp.model.Task;
@@ -34,24 +37,6 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
     private void app() {
         homeFragment = new HomeFragment();
     }
-
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_edit_task:
-                return true;
-            case R.id.action_share_link:
-                shareTask();
-                return true;
-            case R.id.action_delete:
-                deleteTask();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    */
 
     private void home() {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment)
@@ -104,5 +89,11 @@ public class TaskContainerActivity extends AppCompatActivity implements OnTaskLi
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void navigateMap(Activity activity) {
+        Intent intent = new Intent(activity, TaskMapActivity.class);
+        startActivity(intent);
     }
 }

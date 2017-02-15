@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,8 +34,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-
-import org.w3c.dom.Text;
 
 import todo.mobile.com.todoapp.R;
 import todo.mobile.com.todoapp.listeners.OnTaskListener;
@@ -240,14 +237,14 @@ public class TaskNewFragment extends Fragment implements GoogleApiClient.OnConne
         int id = item.getItemId();
         switch (id) {
             case R.id.action_location:
-                updateLocation();
+                showMap();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateLocation() {
-
+    private void showMap() {
+        mListener.navigateMap(getActivity());
     }
 
     @Override
