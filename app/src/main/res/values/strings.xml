@@ -26,4 +26,7 @@
     <string name="txt_move">Move</string>
     <string name="txt_animate">Animate</string>
     <string name="txt_position">Position</string>
+    <string name="txt_marker">Marker</string>
+    <string name="txt_lines">Lines</string>
+    <string name="txt_polygon">Polygon</string>
 </resources>

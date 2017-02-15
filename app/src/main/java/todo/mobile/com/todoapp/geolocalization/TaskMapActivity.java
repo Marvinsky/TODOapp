@@ -1,5 +1,6 @@
 package todo.mobile.com.todoapp.geolocalization;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,13 +16,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import todo.mobile.com.todoapp.R;
 
 public class TaskMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap map;
-    Button btnOpciones, btnMove, btnAnimate, btnPosition;
+    Button btnOpciones, btnMove, btnAnimate, btnPosition, btnMarker, btnLine, btnPolygon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class TaskMapActivity extends AppCompatActivity implements OnMapReadyCall
         btnMove = (Button) findViewById(R.id.btnMove);
         btnAnimate = (Button) findViewById(R.id.btnAnimate);
         btnPosition = (Button) findViewById(R.id.btnPosition);
+
+        btnMarker = (Button) findViewById(R.id.btnMarker);
+        btnLine = (Button) findViewById(R.id.btnLines);
+        btnPolygon = (Button) findViewById(R.id.btnPolygon);
 
         btnOpciones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +72,59 @@ public class TaskMapActivity extends AppCompatActivity implements OnMapReadyCall
                 getPosition();
             }
         });
+
+        btnMarker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                insertMarker();
+            }
+        });
+
+        btnLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLines();
+            }
+        });
+
+        btnPolygon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPolygon();
+            }
+        });
+    }
+
+    private void showPolygon() {
+        PolygonOptions rectangle = new PolygonOptions()
+                .add(new LatLng(45.0, -12.0))
+                .add(new LatLng(45.0, 5.0))
+                .add(new LatLng(34.5, 5.0))
+                .add(new LatLng(34.5, -12.0))
+                .add(new LatLng(45.0, -12.0));
+
+        rectangle.strokeWidth(8);
+        rectangle.strokeColor(Color.RED);
+        map.addPolygon(rectangle);
+    }
+
+    private void showLines() {
+        PolygonOptions lines = new PolygonOptions()
+                .add(new LatLng(45.0, -12.0))
+                .add(new LatLng(45.0, 5.0))
+                .add(new LatLng(34.5, 5.0))
+                .add(new LatLng(34.5, -12.0))
+                .add(new LatLng(45.0, -12.0));
+
+        lines.strokeWidth(8);
+        lines.strokeColor(Color.RED);
+        map.addPolygon(lines);
+    }
+
+    private void insertMarker() {
+        map.addMarker(new MarkerOptions()
+            .position(new LatLng(40.3936945, -3.701519))
+            .title("Country: Spain"));
     }
 
     private void getPosition() {
@@ -101,6 +162,7 @@ public class TaskMapActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        map.getUiSettings().setMapToolbarEnabled(false);//Remove buttons at the bottom from map
 
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -128,6 +190,17 @@ public class TaskMapActivity extends AppCompatActivity implements OnMapReadyCall
                         "Orientation: " + position.bearing + "\n" +
                                 "Angulo: " + position.tilt
                         , Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(TaskMapActivity.this,
+                        "Mark touched: \n" +
+                marker.getTitle(),
+                        Toast.LENGTH_SHORT).show();
+                return false;
             }
         });
 

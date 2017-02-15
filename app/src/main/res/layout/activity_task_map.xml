@@ -6,43 +6,77 @@
     android:layout_height="match_parent"
     tools:context="todo.mobile.com.todoapp.geolocalization.TaskMapActivity">
 
-    <Button
-        android:id="@+id/btnOpciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_options"
-        />
+    <LinearLayout
+        android:id="@+id/ly4buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnMove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_move"
-        android:layout_toRightOf="@id/btnOpciones"
-        />
+        <Button
+            android:id="@+id/btnOpciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_options"
+            />
 
-    <Button
-        android:id="@+id/btnAnimate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_animate"
-        android:layout_toRightOf="@id/btnMove"
-        />
+        <Button
+            android:id="@+id/btnMove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_move"
+            />
 
-    <Button
-        android:id="@+id/btnPosition"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnAnimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_animate"
+            />
+
+        <Button
+            android:id="@+id/btnPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_position"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly3buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_position"
-        android:layout_toRightOf="@id/btnAnimate"
-        />
+        android:layout_below="@id/ly4buttons"
+        >
+
+        <Button
+            android:id="@+id/btnMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_marker"
+            />
+
+        <Button
+            android:id="@+id/btnLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_lines"
+            />
+
+        <Button
+            android:id="@+id/btnPolygon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_polygon"
+            />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/btnOpciones"
+        android:layout_below="@id/ly3buttons"
         />
 
 </RelativeLayout>
