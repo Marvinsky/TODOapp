@@ -19,6 +19,14 @@
         android:layout_centerHorizontal="true"
         />
 
+    <Button
+        android:id="@+id/btn_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login_fb"
+        android:textAllCaps="false"
+        android:text="Continua con email"/>
+
 
 
 </RelativeLayout>
